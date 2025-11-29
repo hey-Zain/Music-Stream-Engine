@@ -14,9 +14,9 @@ const AllAlbums = async (req, res, next) => {
 }
 const AllAlbumsById = async (req, res, next) => {
     try {
-        const {albumId} = req.params;
+        const { albumId } = req.params;
         const album = await Album.findById(albumId).populate("songs");
-        if(!album){
+        if (!album) {
             return res.status(404).json({
                 message: "Invaild Data"
             })

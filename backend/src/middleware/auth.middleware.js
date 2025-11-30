@@ -1,26 +1,34 @@
 const { clerkClient } = require('@clerk/express');
 
 const protectRoute = async (req, res, next) => {
-    if (!req.auth.userId) {
-        res.status(401).json({
+    if (!req.auth || !req.auth.userId) {
+        return res.status(401).json({
             message: "unauthorized - you must be logged in"
-        })
+        });
     }
-    next();
+    return next();
 }
 
 const requireAdmin = async (req, res, next) => {
     try {
+        if (!req.auth || !req.auth.userId) {
+            return res.status(401).json({ message: 'unauthorized - missing user id' });
+        }
+
         const currentUser = await clerkClient.users.getUser(req.auth.userId);
-        const isAdmin = process.env.ADMIN_EMAIL === currentUser.primaryEmailAddress.emailAddress
+        const primaryEmail = currentUser?.primaryEmailAddress?.emailAddress;
+        const isAdmin = process.env.ADMIN_EMAIL && primaryEmail && process.env.ADMIN_EMAIL === primaryEmail;
+
         if (!isAdmin) {
             return res.status(403).json({
-                message: "unauthorized - you must be logged in"
-            })
+                message: "forbidden - admin only"
+            });
         }
-    } catch (err) {
-        console.log(err);
 
+        return next();
+    } catch (err) {
+        console.error('requireAdmin error:', err?.message || err);
+        return res.status(500).json({ message: 'internal server error' });
     }
 }
 

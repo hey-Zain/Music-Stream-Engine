@@ -8,7 +8,7 @@ import {
 import LeftSidebar from './components/LeftSidebar'
 import FriendsActivity from './components/FriendsActivity'
 import AuidoPlayer from './components/AuidoPlayer'
-
+import PlaybackControls from './components/PlaybackControls'
 
 
 const MainLayout = () => {
@@ -37,6 +37,8 @@ const MainLayout = () => {
           <FriendsActivity />
         </ResizablePanel>
       </ResizablePanelGroup>
+
+      <PlaybackControls />
     </div>
   )
 }

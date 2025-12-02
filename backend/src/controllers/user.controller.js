@@ -1,9 +1,10 @@
+const Message = require("../models/message.model");
 const User = require("../models/user.model")
 
 const getAllUser = async (req, res, next) => {
     try {
         const currentUderId = req.auth.userId;
-        const user = await User.find({clerkId: {$ne: currentUderId}})
+        const user = await User.find({ clerkId: { $ne: currentUderId } })
         res.status(200).json({
             success: true,
             message: "Get All Users Successfully",
@@ -15,6 +16,29 @@ const getAllUser = async (req, res, next) => {
 }
 
 
+const getMessage = async (req, res, next) => {
+    try {
+        const myId = req.quth.userId;
+        const { userId } = req.params;
+        const message = await Message.find({
+            $or: [
+                { senderId: userId, receiverId: myId },
+                { senderId: myId, receiverId: userId },
+            ]
+        }).sort({ createAt: 1 });
+
+        res.status(200).json({
+            success:true,
+            message: "Message Founded Successfully",
+            message
+        })
+    } catch (err) {
+        next(err)
+    }
+}
+
+
 module.exports = {
-    getAllUser
+    getAllUser,
+    getMessage
 }

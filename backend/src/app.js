@@ -5,11 +5,19 @@ const dotenv = require('dotenv').config();
 const { clerkMiddleware } = require("@clerk/express")
 const fileUpload = require("express-fileupload")
 const path = require("path");
+const { createServer } = require('http');
+const { initializeSocket } = require('./lib/socket');
+
 
 const app = express();
 
 // Use the built-in __dirname or create a custom variable
 const projectRoot = path.resolve();
+
+const httpServer = createServer(app);
+
+initializeSocket(httpServer);
+
 
 app.use(cors({
     origin: "http://localhost:3000",
@@ -50,7 +58,7 @@ app.get('/', (req, res) => {
 // Make sure port is defined
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => {
+httpServer.listen(port, () => {
     connectDB();
     console.log(`Server is running on port ${port}`);
 });

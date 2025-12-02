@@ -3,6 +3,7 @@ import { useAuth } from '@clerk/clerk-react'
 import React, { Children, useEffect, useState } from 'react'
 import { LoaderCircle } from 'lucide-react'
 import { useAuthStore } from '@/store/useAuthStore';
+import { useChatStore } from '@/store/useChatStore';
 
 const updateApiToken = (token: string | null) => {
     if (token) axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -16,7 +17,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const { getToken, userId } = useAuth();
     const [loading, setLoading] = useState(true);
     const { checkAdminStatus } = useAuthStore()
-
+    const { initSocket, disconnectSocket } = useChatStore();
     useEffect(() => {
         const initAuth = async () => {
             try {
@@ -25,6 +26,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 updateApiToken(token);
                 if (token) {
                     await checkAdminStatus();
+                    //init socket
+                    if (userId) {
+                        initSocket(userId);
+                    }
                 }
 
             } catch (error) {
@@ -35,7 +40,11 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             }
         }
         initAuth();
-    }, [getToken, checkAdminStatus]);
+
+
+        //clean up function
+        return () => disconnectSocket();
+    }, [getToken, checkAdminStatus, userId, initSocket, disconnectSocket]);
 
     if (loading) {
         return (

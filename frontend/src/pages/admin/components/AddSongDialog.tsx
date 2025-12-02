@@ -67,7 +67,7 @@ const AddSongDialog = () => {
 				headers: {
 					"Content-Type": "multipart/form-data",
 				},
-			}).then((res)=>console.log(res)
+			}).then((res) => console.log(res)
 			)
 
 			setNewSong({

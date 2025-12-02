@@ -77,17 +77,16 @@ const PlaybackControls = () => {
 				{/* player controls*/}
 				<div className='flex flex-col items-center gap-1 flex-1 max-w-full sm:max-w-[45%]'>
 					<div className='flex items-center gap-4 sm:gap-6 -mt-2'>
-						 <Button
-            onClick={toggleShuffle}
-            size='icon'
-            variant='ghost'
-            className={`hidden sm:inline-flex hover:text-white ${
-                isShuffled ? 'text-green-500' : 'text-zinc-400'
-            }`}
-            title={isShuffled ? 'Shuffle on' : 'Shuffle off'}
-        >
-            <Shuffle className='h-4 w-4' />
-        </Button>
+						<Button
+							onClick={toggleShuffle}
+							size='icon'
+							variant='ghost'
+							className={`hidden sm:inline-flex hover:text-white ${isShuffled ? 'text-green-500' : 'text-zinc-400'
+								}`}
+							title={isShuffled ? 'Shuffle on' : 'Shuffle off'}
+						>
+							<Shuffle className='h-4 w-4' />
+						</Button>
 
 						<Button
 							size='icon'

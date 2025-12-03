@@ -20,6 +20,8 @@
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
     "jsx": "react-jsx",
 
     /* Linting */

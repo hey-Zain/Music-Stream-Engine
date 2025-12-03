@@ -1,3 +1,4 @@
+// Imported skeleton is a .jsx file; TypeScript needs a declaration for it. Keep import for runtime.
 import UsersListSkeleton from "../../../components/skeletons/UsersListSkeleton.jsx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";

@@ -3,14 +3,14 @@
 // import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/home/page/HomePage.jsx'
-import ChatPage from './pages/chat/page/ChatPage'
+import ChatPage from './pages/chat/page/ChatPage.jsx'
 import AuthCallbackPage from './pages/auth-callback/AuthCallbackPage.jsx'
 // import { axiosInstance } from './lib/axios.js'
 import { AuthenticateWithRedirectCallback } from '@clerk/clerk-react'
 import MainLayout from './components/layout/MainLayout.jsx'
-import AlbumPage from './pages/album/AlbumPage'
-import AdminPage from './pages/admin/AdminPage'
-import NotFoundPage from './pages/404/NotFoundPage'
+import AlbumPage from './pages/album/AlbumPage.js'
+import AdminPage from './pages/admin/AdminPage.js'
+import NotFoundPage from './pages/404/NotFoundPage.js'
 
 const App = () => {
 

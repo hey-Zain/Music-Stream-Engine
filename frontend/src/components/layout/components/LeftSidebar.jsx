@@ -1,8 +1,8 @@
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { SignedIn } from '@clerk/clerk-react'
-import { HomeIcon, Library, MessageCircle } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+import { HomeIcon, MessageCircle } from 'lucide-react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import PlaylistSkeleton from '../../skeletons/PlaylistSkeleton.jsx'
@@ -27,7 +27,8 @@ const LeftSidebar = () => {
     }, []);
 
 
-    const CollapseSidebar = ()=>{}
+    // placeholder for collapse handler (kept for future use)
+    // CollapseSidebar intentionally omitted (not used yet)
 
 
     return (

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import Topbar from '../../components/ui/Topbar'
-import { useMusicStore } from '../../store/useMusicStore'
-import FeaturedSection from './components/FeaturedSection'
+import Topbar from '../../../components/ui/Topbar'
+import { useMusicStore } from '../../../store/useMusicStore'
+import FeaturedSection from '../components/FeaturedSection'
 import { ScrollArea } from '@/components/ui/scroll-area';
-import SectionGrid from './components/SectionGrid'
+import SectionGrid from '../components/SectionGrid'
 import { usePlayerStore } from '@/store/usePlayerStore'
-import { Button } from '../../components/ui/button';
+import { Button } from '../../../components/ui/button';
 
 
 

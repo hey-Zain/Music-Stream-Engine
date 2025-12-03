@@ -1,5 +1,5 @@
 import { useAuthStore } from '@/store/useAuthStore'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Header from './components/Header';
 import DashboardStats from './components/DashboardStats';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -11,16 +11,15 @@ import { useMusicStore } from '@/store/useMusicStore';
 const AdminPage = () => {
 
     const { isAdmin, isLoading } = useAuthStore();
-    const { fetchStats, fetchSongs, fetchAlbums, songs, stats } = useMusicStore();
+    const { fetchStats, fetchSongs, fetchAlbums } = useMusicStore();
     useEffect(() => {
         fetchStats();
         fetchSongs();
         fetchAlbums();
-        // console.log(stats);
+    }, [fetchStats, fetchSongs, fetchAlbums]);
 
-    }, []);
-
-    if (isAdmin, isLoading) return <div className=''>Unauthorized</div>
+    if (isLoading) return <div>Loading...</div>
+    if (!isAdmin) return <div className=''>Unauthorized</div>
     return (
         <div className='min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900
    to-black text-zinc-100 p-8'>

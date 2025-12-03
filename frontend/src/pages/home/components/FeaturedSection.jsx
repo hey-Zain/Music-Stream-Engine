@@ -1,11 +1,10 @@
 import { useMusicStore } from '@/store/useMusicStore'
-import React from 'react'
 import FeaturedGridSkeleton from '@/components/skeletons/FeaturedGridSkeleton'
 import PlayButton from './PlayButton'
 
 
 const FeaturedSection = () => {
-    const { isLoading, featuredSongs, error, songs } = useMusicStore()
+	const { isLoading, featuredSongs, error } = useMusicStore()
     // console.log(featuredSongs);
     
     if (isLoading) return <FeaturedGridSkeleton />

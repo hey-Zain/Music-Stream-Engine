@@ -1,13 +1,13 @@
 import { usePlayerStore } from '@/store/usePlayerStore';
 import { useChatStore } from '@/store/useChatStore';
 import { useUser } from '@clerk/clerk-react';
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 const AudioPlayer = () => {
     const audioRef = useRef<HTMLAudioElement>(null);
     const prevSongRef = useRef<string | null>(null);
 
-    const { currentSong, isPlaying, playNext, playPrevious, repeatMode } = usePlayerStore()
+    const { currentSong, isPlaying, playNext, repeatMode } = usePlayerStore()
     const { socket } = useChatStore();
     const { user } = useUser();
 

@@ -52,7 +52,15 @@ export const useChatStore = create<chatStore>((set, get) => ({
 
             })
         } catch (error) {
-            set({ error: error.response?.data?.message || error.message || 'Error fetching users' })
+            let message = 'Error fetching users';
+            try {
+                const e = JSON.parse(JSON.stringify(error));
+                if (e?.response?.data?.message) message = e.response.data.message;
+                else if (e?.message) message = e.message;
+            } catch {
+                // keep generic
+            }
+            set({ error: message })
         } finally {
             set({ isLoading: false })
         }

@@ -34,7 +34,7 @@ export interface Message {
     senderId: string,
     receiverId: string,
     content: string,
-    createAt: string,
+    createdAt: string,
     updatedAt: string,
 }
 

@@ -2,14 +2,14 @@
 import { useChatStore } from "@/store/useChatStore";
 import { useUser } from "@clerk/clerk-react";
 import { useEffect } from "react";
-import UsersList from "./components/UsersList";
-import ChatHeader from "./components/ChatHeader";
+import UsersList from "../components/UsersList.jsx";
+import ChatHeader from "../components/ChatHeader";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import MessageInput from "./components/MessageInput";
-import TopHeader from "../../components/layout/components/TopHeader";
+import MessageInput from "../components/MessageInput";
+// import TopHeader from "../../../components/layout/components/TopHeader";
 
-const formatTime = (date) => {
+const formatTime = (date: any) => {
 	return new Date(date).toLocaleTimeString("en-US", {
 		hour: "2-digit",
 		minute: "2-digit",

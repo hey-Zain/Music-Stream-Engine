@@ -1,8 +1,8 @@
 import { usePlayerStore } from '@/store/usePlayerStore'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Slider } from "@/components/ui/slider"
 import { Button } from '@/components/ui/button';
-import { Laptop2, ListMusic, Mic2, Pause, Play, Repeat, Repeat1, Shuffle, SkipBack, SkipForward, Volume1 } from 'lucide-react';
+import { Laptop2, ListMusic, Mic2, Pause, Play, Repeat, Shuffle, SkipBack, SkipForward, Volume1 } from 'lucide-react';
 
 const formatTime = (seconds: number) => {
 	const minutes = Math.floor(seconds / 60);

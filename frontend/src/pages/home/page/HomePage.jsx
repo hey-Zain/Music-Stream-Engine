@@ -34,7 +34,13 @@ const HomePage = () => {
   return (
     <main className="rounded-md overflow-hidden h-full bg-gradient-to-b from-zinc-950 to-zinc-900">
       {/* <Topbar /> */}
-
+       {/* <Button
+          onClick={() => {
+            throw new Error('This is your first error!');
+          }}
+        >
+          Break the world
+        </Button> */}
       <ScrollArea className='h-[calc(100vh-180px)]'>
         <div className='p-4 sm:p-6'>
           {/* <h1 className='text-2xl sm:text-3xl font-bold mb-6'>Good After noon</h1> */}

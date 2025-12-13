@@ -22,8 +22,8 @@ interface chatStore {
     setSelectedUser: (user: User | null) => void;
 }
 
-// const baseURL = import.meta.env.MODE === "development" ? "http://localhost:5000" : "/";
-const baseURL = "https://music-bd.vercel.app";
+const baseURL = import.meta.env.MODE === "development" ? "http://localhost:5000" : "/";
+// const baseURL = "https://music-bd.vercel.app";
 const socket = io(baseURL, {
     autoConnect: false,
     withCredentials: true,
@@ -111,11 +111,11 @@ export const useChatStore = create<chatStore>((set, get) => ({
             });
 
             socket.on("activity_updated", ({ userId, activity }) => {
-                console.log('Activity updated:', { userId, activity });
+                // console.log('Activity updated:', { userId, activity });
                 set((state) => {
                     const newActivities = new Map(state.userActivities);
                     newActivities.set(userId, activity);
-                    console.log('New activities map:', Array.from(newActivities.entries()));
+                    // console.log('New activities map:', Array.from(newActivities.entries()));
                     return { userActivities: newActivities };
                 });
             });
@@ -141,7 +141,14 @@ export const useChatStore = create<chatStore>((set, get) => ({
         set({ isLoading: true, error: null });
         try {
             const response = await axiosInstance.get(`/users/message/${userId}`);
-            set({ messages: response.data })
+            // backend returns an array directly (res.json(messages)),
+            // but some endpoints may return { messages: [...] }.
+            const messagesPayload = Array.isArray(response.data)
+                ? response.data
+                : response.data?.messages ?? [];
+            set({ messages: messagesPayload });
+            console.log(response);
+            
         } catch (error) {
             let message = 'Error fetching messages';
             try {

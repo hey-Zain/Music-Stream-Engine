@@ -1,4 +1,4 @@
-![Linux OS Clone](./frontend/public/images/MusicApp-Home.png)
+![Home](./frontend/public/images/MusicApp-Home.png)
 
 MusicApp
 
@@ -71,7 +71,10 @@ Place screenshots and images in the frontend `public/` folder. Example placehold
 
 Add images to the README using relative paths, for example:
 
-![App home](/frontend/public/cover-images/MusicApp-Home.png)
+![Home](./frontend/public/images/MusicApp-Home.png)
+![Home](./frontend/public/images/MusicApp-after-login.png)
+![Home](./frontend/public/images/MusicApp-Album.png)
+![Home](./frontend/public/images/MusicApp-Chat.png)
 
 ## Run Locally
 

@@ -103,7 +103,7 @@ npm install
 npm run dev
 ```
 
-Open the frontend URL from Vite (usually http://localhost:5173) and the backend (http://localhost:5000) depending on your `PORT`.
+Open the frontend URL from Vite (usually http://localhost:3000) and the backend (http://localhost:5000), depending on your `PORT`.
 
 ## Notes & Troubleshooting
 
@@ -111,6 +111,4 @@ Open the frontend URL from Vite (usually http://localhost:5173) and the backend 
 - Ensure Clerk keys are configured for both frontend and backend, and the Authorization header is set for API calls.
 - Check browser console and backend logs for socket connect events and errors.
 
-## License
 
-This project is private. Update this section if you add a license.

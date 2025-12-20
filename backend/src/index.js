@@ -72,9 +72,12 @@ if (Sentry.Handlers && typeof Sentry.Handlers.errorHandler === 'function') {
     app.use(Sentry.Handlers.errorHandler());
 }
 
+// Connect to Database
+connectDB();
+
 // Error Handler
 app.use((err, req, res, next) => {
-    console.log();
+    console.error("Error in production:", err); // Log full error to Vercel console
     res.status(500).json({
         message: process.env.NODE_ENV === "production" ? "Internal Server Error" : err.message
     })
@@ -96,7 +99,10 @@ app.get('/', (req, res) => {
 
 // Make sure port is defined
 
-httpServer.listen(port, () => {
-    connectDB();
-    console.log(`Server is running on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    httpServer.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}
+
+module.exports = app;

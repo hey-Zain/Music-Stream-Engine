@@ -40,8 +40,8 @@ app.get("/debug-sentry", function mainHandler(req, res) {
 
 app.use(cors({
     // origin: ["http://localhost:3000", "https://musicshoot.vercel.app"],
-    // origin: "https://musicshoot.vercel.app",
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://musicshoot.vercel.app"],
+    // origin: "http://localhost:3000",
     credentials: true,
 }));
 app.use(express.json()); // to parse req.body

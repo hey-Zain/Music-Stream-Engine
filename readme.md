@@ -1,5 +1,3 @@
-
-
 MusicApp
 
 A full-stack music web application with user authentication, media uploads, real-time chat, and admin tools. The project includes an Express + MongoDB backend and a React + Vite frontend with Clerk for authentication and Socket.IO for real-time features.
@@ -71,17 +69,7 @@ Place screenshots and images in the frontend `public/` folder. Example placehold
 
 Add images to the README using relative paths, for example:
 
-# Home Screen
-![Home](./frontend/public/images/MusicApp-Home.png)
-
-# After Login Home Screen
-![Home](./frontend/public/images/MusicApp-after-login.png)
-
-# Album Page
-![Home](./frontend/public/images/MusicApp-Album.png)
-
-# Chat Page
-![Home](./frontend/public/images/MusicApp-Chat.png)
+![App home](/frontend/public/cover-images/MusicApp-Home.png)
 
 ## Run Locally
 
@@ -103,7 +91,7 @@ npm install
 npm run dev
 ```
 
-Open the frontend URL from Vite (usually http://localhost:3000) and the backend (http://localhost:5000), depending on your `PORT`.
+Open the frontend URL from Vite (usually http://localhost:5173) and the backend (http://localhost:5000) depending on your `PORT`.
 
 ## Notes & Troubleshooting
 
@@ -111,4 +99,6 @@ Open the frontend URL from Vite (usually http://localhost:3000) and the backend 
 - Ensure Clerk keys are configured for both frontend and backend, and the Authorization header is set for API calls.
 - Check browser console and backend logs for socket connect events and errors.
 
+## License
 
+This project is private. Update this section if you add a license.
